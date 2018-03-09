@@ -65,7 +65,7 @@ app.get("/viewpricesall", function(req, res) {
   client.connect();
   client
     .query(
-      "SELECT price, store, date FROM price ORDER BY date ASC"
+      "SELECT price, store, date FROM price ORDER BY date DESC"
     )
     .then(res1 => {
       console.log(res1.rows);
