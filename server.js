@@ -56,6 +56,28 @@ app.post("/insertdata", function(req, res) {
     });
 });
 
+app.get("/viewpricesall", function(req, res) {
+  const client = new PG.Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
+  });
+  console.log("retrieveserver");
+  client.connect();
+  client
+    .query(
+      "SELECT price, store, date FROM price ORDER BY date ASC"
+    )
+    .then(res1 => {
+      console.log(res1.rows);
+      client.end();
+      res.send(res1.rows);
+    })
+    .catch(error => {
+      client.end();
+      console.warn(error);
+    });
+});
+
 app.get("*", (request, result) => {
   result.sendFile(path.join(__dirname, "build/index.html"));
 });
