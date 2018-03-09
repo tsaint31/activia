@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 app.use(
   "/static",
-  express.static(path.join(__dirname, "react-app/build/static"))
+  express.static(path.join(__dirname, "build/static"))
 );
 
 app.use(function(req, res, next) {
@@ -29,7 +29,7 @@ app.use(function(req, res, next) {
 
 
 app.get("/favicon.ico", function (req, res) {
-  res.sendFile(path.join(__dirname, "react-app/build/favicon.ico"));
+  res.sendFile(path.join(__dirname, "build/favicon.ico"));
 });
 // Listen to POST requests.
 
