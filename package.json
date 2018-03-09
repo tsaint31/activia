@@ -4,9 +4,9 @@
   "main": "index.js",
   "scripts": {
     "prestart": "npm run build",
-    "start": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
-    "dev": "node server.js",
+    "dev": "react-scripts start",
     "eject": "react-scripts eject"
   },
   "dependencies": {
