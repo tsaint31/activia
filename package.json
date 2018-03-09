@@ -1,7 +1,14 @@
 {
   "name": "activia",
   "version": "0.1.0",
-  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm run build",
+    "start": "node server.js",
+    "build": "react-scripts build",
+    "dev": "react-scripts start",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "express": "^4.16.2",
     "pg": "^7.4.1",
@@ -12,15 +19,7 @@
     "redux": "^3.7.2",
     "redux-form": "^7.3.0"
   },
-  "scripts": {
-    "prestart": "npm run build",
-    "start": "node server.js",
-    "build": "react-scripts build",
-    "dev": "react-scripts start",
-    "eject": "react-scripts eject"
-  },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
-  "main": "index.js",
   "devDependencies": {},
   "proxy": "http://localhost:4000",
   "author": "",
