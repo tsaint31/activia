@@ -26,3 +26,59 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+input[type="range"] {
+  position: relative;
+  margin: 0 90px;
+}
+input[type="range"]:before,
+input[type="range"]:after {
+  position: absolute;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  top: -2px;
+  color: #008463;
+}
+input[type="range"]:before{
+  content: "High satisfaction";
+  left: -150px;
+}
+input[type="range"]:after{
+  content: "Very low satisfaction";
+  right: -200px;
+}
+input[type="range"] {
+  -webkit-appearance: none !important;
+  display: inline-block;
+  height: 10px;
+  width: 1140px;
+  margin: 26px 0px 50px 200px;
+  background: #DAEAE6;
+  background-image:url(images/eva.png) ;
+  border: 1px solid #00BF8F;
+  border-radius: 10px;
+  display: block;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  height: 15px;
+  width: 15px;
+  border: 4px solid #00BF8F;
+  border-radius: 20px;
+  box-shadow: 0 0 0 1px #00BF8F, 0 0 8px #008463 inset;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+input[type="range"]::-webkit-slider-thumb:hover, input[type="range"]::-webkit-slider-thumb:active {
+  height: 20px;
+  width: 20px;
+  border: 6px solid #008463;
+  background: #fff;
+  box-shadow: 0 0 0 0px #00BF8F, 0 0 8px #00BF8F inset;
+}

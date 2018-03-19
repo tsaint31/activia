@@ -1,9 +1,10 @@
-export default function insertdata(price,store) {
+export default function insertdata(price,store,satisfaction) {
   const input = {
     price:price,
     store:store,
+    satisfaction:satisfaction
   };
-  console.log("hello2");
+  console.log(satisfaction);
   return fetch('/insertdata', {
                method: 'POST',
                headers: {
