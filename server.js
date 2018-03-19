@@ -18,6 +18,9 @@ app.use(
   express.static(path.join(__dirname, "build/static"))
 );
 
+app.use("/images", express.static(path.join(__dirname, "images")));
+
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*"); // Put an origin here, * means everything which is bad.
   res.header(
@@ -34,7 +37,6 @@ app.get("/favicon.ico", function (req, res) {
 // Listen to POST requests.
 
 app.post("/insertdata", function(req, res) {
-  console.log("hello3");
   const client = new PG.Client({
     connectionString: process.env.DATABASE_URL,
     ssl: true
@@ -42,8 +44,8 @@ app.post("/insertdata", function(req, res) {
   client.connect();
   client
     .query(
-      "INSERT INTO price (id, price, store,date) VALUES (uuid_generate_v4(),$1,$2,Now())",
-      [req.body.price, req.body.store]
+      "INSERT INTO price (id, price, store,date,satisfaction) VALUES (uuid_generate_v4(),$1,$2,Now(),$3)",
+      [req.body.price, req.body.store,req.body.satisfaction]
     )
     .then(res1 => {
       client.end();
@@ -61,14 +63,12 @@ app.get("/viewpricesall", function(req, res) {
     connectionString: process.env.DATABASE_URL,
     ssl: true
   });
-  console.log("retrieveserver");
   client.connect();
   client
     .query(
-      "SELECT price, store, date FROM price ORDER BY date DESC"
+      "SELECT price, store, date, satisfaction FROM price ORDER BY date DESC"
     )
     .then(res1 => {
-      console.log(res1.rows);
       client.end();
       res.send(res1.rows);
     })

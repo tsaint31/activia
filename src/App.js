@@ -11,7 +11,8 @@ class App extends Component {
     super(props);
     this.state = {
       current_price: null,
-      current_store: null
+      current_store: null,
+      current_satisfaction: null
     }
   }
 
@@ -31,10 +32,16 @@ class App extends Component {
     });
   }
 
+  handleInputsatisfaction = (event) => {
+    console.log(event.target.value);
+    this.setState({
+      current_satisfaction: event.target.value
+    });
+  }
+
   onSubmit = (event) => {
     event.preventDefault();
-    console.log("hello");
-    insertdata(this.state.current_price, this.state.current_store)
+    insertdata(this.state.current_price, this.state.current_store,this.state.current_satisfaction)
     .then((response) => {
         window.location.reload()
     });
@@ -54,7 +61,7 @@ class App extends Component {
       let formated_date = this.formatDate(price.date);
         return (
             <div>
-              <h3>{price.price} € {formated_date} {price.store}</h3>
+              <h3>{price.price} € {formated_date} {price.store} unsatisfaction: {price.satisfaction}/100 </h3>
             </div>
         )
     });
@@ -81,6 +88,12 @@ class App extends Component {
         <div>
             <label className="topTitle">STORE:</label>
             <input type="text" value={this.state.current_store} className="form-control formset" onChange={this.handleInputstore} />
+        </div>
+        <div>
+        <label className="topTitle">YOUR SATISFACTION:</label>
+        </div>
+        <div>
+        <input name="" type="range" value={this.state.current_satisfaction} default="50" min="1" max="100" step="1" onChange={this.handleInputsatisfaction} />
         </div>
         <button type="submit" className="btn submitset dashboard_button" >
             SEND
