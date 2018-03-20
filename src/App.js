@@ -92,7 +92,7 @@ class App extends Component {
         <div>
         <label className="topTitle">YOUR SATISFACTION:</label>
         </div>
-        <div>
+        <div class="col-s-8">
         <input name="" type="range" value={this.state.current_satisfaction} default="50" min="1" max="100" step="1" onChange={this.handleInputsatisfaction} />
         </div>
         <button type="submit" className="btn submitset dashboard_button" >
