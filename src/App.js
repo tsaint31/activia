@@ -61,7 +61,7 @@ class App extends Component {
       let formated_date = this.formatDate(price.date);
         return (
             <div>
-              <h3>{price.price} € {formated_date} {price.store} unsatisfaction: {price.satisfaction}/100 </h3>
+              <h3>{price.price} € {formated_date} {price.store} satisfaction: {price.satisfaction}/100 </h3>
             </div>
         )
     });
