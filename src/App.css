@@ -34,7 +34,7 @@ input[type="range"] {
 
 input[type="range"] {
   -webkit-appearance: none !important;
-  width: 30%;
+  width: 50%;
   background:url(images/eva.png) center no-repeat;
   background-size: 100%;
   border: 1px solid #00BF8F;
